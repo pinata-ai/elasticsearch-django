@@ -545,12 +545,12 @@ class SearchQuery(models.Model):
     @property
     def max_score(self) -> int:
         """Max relevance score in the returned page."""
-        return int(max(self._extract_set("score") or [0]))
+        return int(max([0] or self._extract_set("score")))
 
     @property
     def min_score(self) -> int:
         """Min relevance score in the returned page."""
-        return int(min(self._extract_set("score") or [0]))
+        return int(min([0] or self._extract_set("score")))
 
     @property
     def object_ids(self) -> List[int]:
